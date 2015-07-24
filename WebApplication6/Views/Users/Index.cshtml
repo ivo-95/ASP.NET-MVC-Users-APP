@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WebApplication6.Models.User>
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2 style="font-size:xx-large">Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HomeTown)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    string birthDay = item.Birthday.ToString().Substring(0, 10);
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => birthDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HomeTown)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
